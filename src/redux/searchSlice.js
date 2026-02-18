@@ -1,22 +1,18 @@
-export const searchUser =(userName)=>{
-    return{
-        type: "search/searchUser",
-        payload: userName
-    }
-}
+import { createSlice } from "@reduxjs/toolkit"
+
+// export const searchUser = createReducer("search/searchUser")
 
 
 
+const slice = createSlice({
+    name: "search",
+    initialState: {data: ""},
+    reducers:{
+        searchUser:(state, action)=>{
+            state.data= action.payload;
+        },
+    },
+})
 
-export const searchReducer = (state={data: ""}, action)=>{
-    switch(action.type){
-        case("search/searchUser"):
-            return {
-                data: action.payload
-            }
-
-        
-        default:
-            return state
-    }
-}
+export const {searchUser} = slice.actions
+export default slice.reducer

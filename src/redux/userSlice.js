@@ -1,31 +1,35 @@
 import contactsData from '../contacts.json'
+import { createSlice } from '@reduxjs/toolkit'
 
 
-export const addUser = (newUser)=>{
-    return {
-        type: "user/addUser",
-        payload: newUser,
+// export const addUser = createAction("user/addUser")
+// export const deleteUser = createAction("user/deleteUser")
+
+// export const userReducer = createReducer(
+//     {data: contactsData},
+//     (builder)=>{builder
+//         .addCase(addUser, (state, action)=>{
+//         state.data.push(action.payload)})
+//         .addCase(deleteUser, (state, action)=>{
+//         state.data = state.data.filter(item => item.id !== action.payload)
+//         })
+//     }   
+// )
+
+const slice = createSlice({
+    name: "user",
+    initialState:{data: contactsData},
+    reducers: {
+        addUser: (state, action)=>{
+             state.data.push(action.payload)
+        },
+        deleteUser: (state, action) =>{
+            state.data = state.data.filter(item => item.id !== action.payload)
+        }
     }
-}
-export const deleteUser = (userId)=>{
-    return {
-        type: "user/deleteUser",
-        payload: userId
-    }
-}
 
-export const userReducer = (state={data: contactsData}, action)=>{
-    switch(action.type){
-        case("user/addUser"):
-            return{
-                data: [...state.data, action.payload]
-            }
+})
 
-        case("user/deleteUser"):
-            return{
-                data: state.data.filter((item)=>item.id !== action.payload)
-            }
-        default:
-            return state
-    }
-}
+export const {addUser, deleteUser } = slice.actions
+
+export default slice.reducer
