@@ -1,15 +1,20 @@
+import { useEffect } from 'react'
 import Contact from '../Contact/Contact'
 // import css from './ContactList.module.css'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUsers } from '../../redux/userOps'
+import { selectVisibleData } from '../../redux/userSlice'
 
 export default function ContactList (){
-    const usersData = useSelector((state)=>state.user.data)
-    const searchName = useSelector((state)=>state.search.data)
-    console.log("searchName ", searchName)
+    const dispatch = useDispatch()
+    // console.log("usersData: , ", usersData)
+    const visibleData= useSelector(selectVisibleData)
 
-    const visibleData = usersData.filter((item)=> item.name.toLowerCase().includes(searchName.toLowerCase()))
-    console.log("visible: ", visibleData)
+
+    useEffect(()=>{
+        dispatch(fetchUsers())
+    },[dispatch])
+    
 
     return (
        <>

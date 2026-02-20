@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-// export const searchUser = createReducer("search/searchUser")
-
-
 
 const slice = createSlice({
     name: "search",
@@ -13,6 +10,6 @@ const slice = createSlice({
         },
     },
 })
-
+export const selectSearch = (state) => state.search.data;
 export const {searchUser} = slice.actions
 export default slice.reducer

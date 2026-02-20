@@ -3,7 +3,7 @@ import * as Yup from "yup";
 // import { nanoid } from "nanoid";
 import css from './CotactForm.module.css'
 import { useDispatch } from "react-redux";
-import { addUser } from "../../redux/userSlice";
+import { addContact } from "../../redux/userOps";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -19,15 +19,12 @@ const validationSchema = Yup.object().shape({
 export default function ContactForm() {
 
   const dispatch = useDispatch()
-
   const handleSubmit = (values, actions) => {
-    dispatch(addUser({
-      id: Date.now(),
+    dispatch(addContact({
       name: values.name,
       number: values.number,
-    }))
-    
-    
+      }
+    ))
     actions.resetForm(); 
   };
 

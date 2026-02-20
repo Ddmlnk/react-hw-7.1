@@ -1,15 +1,17 @@
 import css from './Contact.module.css'
 import { FaUser } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
-import { deleteUser } from '../../redux/userSlice';
+// import { deleteUser } from '../../redux/userSlice';
 import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/userOps';
 
 export default function Contact ({item}){
 
     const dispatch=useDispatch()
     
     const handleClick = ()=>{
-      dispatch(deleteUser(item.id))
+      dispatch(deleteContact(item.id))
+      console.log("deleteContact(item.id) ", deleteContact(item.id))
     }
     
     return (
