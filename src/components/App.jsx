@@ -1,5 +1,5 @@
 
-import './App.css'
+import css from "./App.module.css"
 import ContactList from './ContactsList/ContactsList'
 import ContactForm from './CotactForm/CotactForm'
 import SearchBox from './SearchBox/SearchBox'
@@ -7,13 +7,12 @@ import SearchBox from './SearchBox/SearchBox'
 export default function App() {
 
   return (
-    <>
-    <h1>Hello world</h1>
+    <div className={css.wrapper}>
     <ContactForm></ContactForm>
     <SearchBox></SearchBox>
     <ContactList></ContactList>
       
-    </>
+    </div>
   )
 }
 

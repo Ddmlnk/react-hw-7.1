@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Contact from '../Contact/Contact'
-// import css from './ContactList.module.css'
+import css from './ContactsList.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from '../../redux/userOps'
 import { selectVisibleData } from '../../redux/userSlice'
@@ -18,7 +18,7 @@ export default function ContactList (){
 
     return (
        <>
-        <ul>
+        <ul className={css.wrapper}>
             {visibleData.map((item)=>
                 <li key={item.id}>
                     <Contact item={item}></Contact>
